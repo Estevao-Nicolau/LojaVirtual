@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +10,16 @@ class CustomTextField extends StatefulWidget {
     required this.icon,
     required this.label,
     required this.keyType,
+    // required this.valid,
     this.isSecret = false,
   }) : super(key: key);
 
   final IconData icon;
   final String label;
+  // final String Function(String)  valid;
   final bool isSecret;
   final TextInputType keyType;
+
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -56,9 +61,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         keyboardType: widget.keyType,
         autocorrect: false,
-        validator: (email) {
-          return null;
-        },
+        // validator: widget.valid,
       ),
     );
   }
