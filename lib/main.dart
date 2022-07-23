@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: const Color(0xFF7D79D0),
       ),
-      home: LoginScreen(),
+      home: Screen(),
     );
   }
 }

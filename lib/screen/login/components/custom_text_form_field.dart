@@ -1,11 +1,11 @@
-import 'dart:html';
+
 
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
-  const CustomTextField({
+class CustomFormTextField extends StatefulWidget {
+  const CustomFormTextField({
     Key? key,
     required this.icon,
     required this.label,
@@ -22,10 +22,10 @@ class CustomTextField extends StatefulWidget {
 
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<CustomFormTextField> createState() => _CustomFormTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomFormTextFieldState extends State<CustomFormTextField> {
   bool isObscure = false;
 
   @override
