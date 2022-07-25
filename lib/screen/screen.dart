@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:lojavirtual/screen/login_screen.dart';
 import 'package:lojavirtual/common/custom_drawer/custom_drawer.dart';
 import 'package:lojavirtual/models/page_manager.dart';
-import 'package:lojavirtual/screen/login/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class Screen extends StatelessWidget {
