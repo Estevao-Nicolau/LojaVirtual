@@ -1,9 +1,10 @@
 // ignore_for_file: avoid_dynamic_calls
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/firebase_options.dart';
+import 'package:lojavirtual/screen/login/login_screen.dart';
+import 'package:lojavirtual/screen/screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,26 +13,27 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
-
-  FirebaseFirestore.instance
-      .collection('pedidos')
-      .doc('#00001')
-      .set({'preco': 100.00, 'usuario': 'nicolau brito'});
+  runApp(MyApp());
 }
 
+// visualDensity: VisualDensity.adaptivePlatformDensity,
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Loja Nicolau',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch(
+          primarySwatch: Colors.indigo,
+        ).copyWith(secondary: Color(0xFF7D7543D8)),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+        ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: const Color(0xFF7D79D0),
       ),
-      home: Container(),
+      home: Screen(),
     );
   }
 }
