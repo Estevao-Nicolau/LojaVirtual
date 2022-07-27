@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/firebase_options.dart';
-import 'package:lojavirtual/src/screen/login_screen.dart';
+import 'package:lojavirtual/src/screen/sign_in_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
