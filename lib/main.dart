@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/firebase_options.dart';
-import 'package:lojavirtual/src/screen/sign_in_screen.dart';
+import 'package:lojavirtual/src/auth/sign_in_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,12 +25,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.indigo,
-        ).copyWith(secondary: const Color(0xff7d7543d8)),
+        ),
         appBarTheme: const AppBarTheme(
-          elevation: 0,
+          elevation: 1,
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        scaffoldBackgroundColor: const Color(0xFF7D79D0),
       ),
       home: LoginScreen(),
     );

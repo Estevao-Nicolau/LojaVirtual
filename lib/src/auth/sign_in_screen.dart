@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/auth/components/custom_text_form_field.dart';
+import 'package:lojavirtual/src/auth/sign_up_sreen.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -30,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                     Text.rich(
+                    Text.rich(
                       TextSpan(
                         style: TextStyle(
                           fontSize: 40,
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     horizontal: 32,
                     vertical: 32,
                   ),
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                     color: CustomColors.customContrastColor2,
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(45),
@@ -99,30 +100,31 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Email
                         CustomFormTextField(
                           icon: Icons.email,
-                          controller: emailController,
+                          // controller: emailController,
                           label: "Email",
                           isDense: true,
                           keyType: TextInputType.emailAddress,
-                          validator: (email) {
-                            if (email == null || email.isEmpty)
-                              return 'Digite seu email';
-                          },
+                          // validator: (email) {
+                          //   if (email == null || email.isEmpty)
+                          //     return 'Digite seu email';
+                          //   return null;
+                          // },
                         ),
                         // Senha
                         CustomFormTextField(
                           icon: Icons.lock,
-                          controller: passController,
+                          // controller: passController,
                           label: "Senha",
-                          isDense: true,
+                          isDense: false,
                           isSecret: true,
                           keyType: TextInputType.visiblePassword,
-                          validator: (password) {
-                            if (password == null || password.isEmpty)
-                              return 'Digite sua Senha';
-                            if (password.length < 5)
-                              return 'Digite uma senha com pelo menos 7 caracteres';
-                            return null;
-                          },
+                          // validator: (password) {
+                          //   if (password == null || password.isEmpty)
+                          //     return 'Digite sua Senha';
+                          //   if (password.length < 5)
+                          //     return 'Digite uma senha com pelo menos 7 caracteres';
+                          //   return null;
+                          // },
                         ),
                         // Botão de Entrar
                         SizedBox(
@@ -133,7 +135,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              
+                            },
                             child: const Text(
                               'Entrar',
                               style: TextStyle(fontSize: 18),
@@ -141,13 +145,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         // Esqueceu a Senha
-                         Align(
+                        Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
                             onPressed: null,
                             child: Text(
                               'Esqueceu a Senha?',
-                              style: TextStyle(color: CustomColors.customContrastColorLogo),
+                              style: TextStyle(
+                                  color: CustomColors.customContrastColorLogo),
                             ),
                           ),
                         ),
@@ -179,7 +184,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 40,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (c) {
+                                  return SignUpScreen();
+                                }),
+                              );
+                            },
                             style: OutlinedButton.styleFrom(
                               side: BorderSide(
                                 width: 2,
