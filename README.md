@@ -1,16 +1,14 @@
 # lojavirtual
 
-A new Flutter project.
+<h4 align="center"> 
+    :construction:  Projeto em construção  :construction:
+</h4>
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+https://user-images.githubusercontent.com/79880613/180580176-ad2ea881-00b4-4fbe-89a3-ea4c927712ab.mov
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+https://user-images.githubusercontent.com/79880613/180652975-75eb4433-efab-416b-b9c3-a6ed152aa231.mov
+
