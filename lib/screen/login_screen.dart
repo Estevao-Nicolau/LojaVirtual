@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +5,18 @@ import 'package:lojavirtual/auth/components/custom_form_Sign_in_screen.dart';
 import 'package:lojavirtual/auth/components/custom_text_logo.dart';
 import 'package:lojavirtual/models/page_manager.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    
     return Scaffold(
       backgroundColor: const Color(0xFF7D79D0),
       body: SingleChildScrollView(
@@ -19,9 +24,9 @@ class LoginScreen extends StatelessWidget {
           height: size.height,
           width: size.width,
           child: Column(
-            children:  <Widget>[
+            children: <Widget>[
               // Logo
-               const CustomLogo(),
+              const CustomLogo(),
               // Formulário
               FormSignInScreen(),
             ],

@@ -9,6 +9,7 @@ class CustomFormTextField extends StatefulWidget {
     required this.label,
     required this.keyType,
     required this.controller,
+    this.enabled,
     this.isDense,
     this.isSecret = false,
     required this.validator,
@@ -20,8 +21,8 @@ class CustomFormTextField extends StatefulWidget {
   final bool isSecret;
   final TextInputType keyType;
   final bool? isDense;
-
   final TextEditingController? controller;
+  final bool? enabled;
 
   @override
   State<CustomFormTextField> createState() => _CustomFormTextFieldState();
@@ -41,6 +42,7 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
+        enabled: widget.enabled,
         controller: widget.controller,
         obscureText: isObscure,
         validator: widget.validator,

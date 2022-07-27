@@ -11,11 +11,12 @@ class FormSignInScreen extends StatefulWidget {
 }
 
 class _FormSignInScreenState extends State<FormSignInScreen> {
+  // Controller de campos
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+  final scaffoldkey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,119 +31,133 @@ class _FormSignInScreenState extends State<FormSignInScreen> {
           top: Radius.circular(45),
         ),
       ),
-      child: Form(
-        autovalidateMode: AutovalidateMode.always,
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Email
-            CustomFormTextField(
-              icon: Icons.email,
-              controller: emailController,
-              label: "Email",
-              isDense: true,
-              keyType: TextInputType.emailAddress,
-              validator: (email) {
-                if (email == null || email.isEmpty) return 'Digite seu email';
-                if (!emailValid(email)) return 'Digite um email válido!';
-              },
-            ),
-            // Senha
-            CustomFormTextField(
-              icon: Icons.lock,
-              controller: passController,
-              label: "Senha",
-              isDense: true,
-              isSecret: true,
-              keyType: TextInputType.visiblePassword,
-              validator: (password) {
-                if (password == null || password.isEmpty)
-                  return 'Digite sua Senha';
-                if (password.length < 5)
-                  return 'Digite uma senha com pelo menos 7 caracteres';
-                return null;
-              },
-            ),
-            // Botão de Entrar
-            SizedBox(
-              height: 40,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+      child: Consumer<UserManager>(
+        builder: (_, userManager, __) {
+          return Form(
+            autovalidateMode: AutovalidateMode.always,
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Email
+                CustomFormTextField(
+                  icon: Icons.email,
+                  enabled: userManager.loading,
+                  controller: emailController,
+                  label: "Email",
+                  isDense: true,
+                  keyType: TextInputType.emailAddress,
+                  validator: (email) {
+                    if (email == null || email.isEmpty)
+                      return 'Digite seu email';
+                    if (!emailValid(email)) return 'Digite um email válido!';
+                  },
                 ),
-                onPressed: () {
-                  if(_formKey.currentState!.validate()){
-                    context.read<UserManager>().signin(
-                      user: Userr(
-                        email: emailController.text,
-                        password: passController.text,
+                // Senha
+                CustomFormTextField(
+                  icon: Icons.lock,
+                  key: scaffoldkey,
+                  controller: passController,
+                  enabled: !userManager.loading,
+                  label: "Senha",
+                  isDense: true,
+                  isSecret: true,
+                  keyType: TextInputType.visiblePassword,
+                  validator: (password) {
+                    if (password == null || password.isEmpty)
+                      return 'Digite sua Senha';
+                    if (password.length < 5)
+                      return 'Digite uma senha com pelo menos 7 caracteres';
+                    return null;
+                  },
+                ),
+                // Botão de Entrar
+                SizedBox(
+                  height: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      onFail: (e){
-                        print(e);
+                    ),
+                    onPressed: userManager.loading ? null : () {
+                      if (_formKey.currentState!.validate()) {
+                        userManager.signin(
+                            user: Userr(
+                              email: emailController.text,
+                              password: passController.text,
+                            ),
+                            onFail: (e) {
+                              scaffoldkey.currentState!.showSnackBar(
+                                SnackBar(
+                                  content: Text('Have a snack!'),
+                                ),
+                              );
+                            },
+                            onSuccess: () {
+                              // TODO: FECHAR TELA DE LOGIN
+                            });
                       }
-                    );
-                  }
-                },
-                child: const Text(
-                  'Entrar',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-            ),
-            // Esqueceu a Senha
-            const Align(
-              alignment: Alignment.bottomRight,
-              child: TextButton(
-                onPressed: null,
-                child: Text(
-                  'Esqueceu a Senha?',
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
-            ),
-            // Divisor
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 1),
-              child: Row(
-                children: const <Widget>[
-                  Expanded(
-                    child: Divider(
-                      color: Colors.black,
-                      thickness: 1,
+                    },
+                    child: userManager.loading ? CircularProgressIndicator() : const  Text(
+                      'Entrar',
+                      style: TextStyle(fontSize: 18),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Text('ou'),
-                  ),
-                  Expanded(
-                    child: Divider(
-                      color: Colors.black,
-                      thickness: 1,
+                ),
+                // Esqueceu a Senha
+                const Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'Esqueceu a Senha?',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
-                ],
-              ),
-            ),
-            // Botão de Novo User
-            SizedBox(
-              height: 40,
-              child: OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(
-                    width: 2,
-                    color: Colors.grey,
+                ),
+                // Divisor
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Row(
+                    children: const <Widget>[
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 1,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text('ou'),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.black,
+                          thickness: 1,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: Text('Criar Conta'),
-              ),
+                // Botão de Novo User
+                SizedBox(
+                  height: 40,
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(
+                        width: 2,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    child: Text('Criar Conta'),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
