@@ -1,9 +1,8 @@
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:lojavirtual/auth/components/custom_form_Sign_in_screen.dart';
-import 'package:lojavirtual/auth/components/custom_text_logo.dart';
-import 'package:lojavirtual/models/page_manager.dart';
+import 'package:lojavirtual/src/auth/components/custom_form_Sign_in_screen.dart';
+import 'package:lojavirtual/src/auth/components/custom_text_logo.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

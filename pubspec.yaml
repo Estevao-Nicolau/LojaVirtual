@@ -36,7 +36,6 @@ dependencies:
   firebase_storage: ^10.3.3
   firebase_database: ^9.0.20
   animated_text_kit: ^4.2.2
-  lint: ^1.8.2
 
 
   # The following adds the Cupertino Icons font to your application.
