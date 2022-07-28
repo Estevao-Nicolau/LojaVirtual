@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/auth/components/custom_text_form_field.dart';
 import 'package:lojavirtual/src/auth/sign_up_sreen.dart';
+import 'package:lojavirtual/src/base/base_screen.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -136,7 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () {
-                              
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c) {
+                                return  BaseScreen();
+                              },));
                             },
                             child: const Text(
                               'Entrar',
