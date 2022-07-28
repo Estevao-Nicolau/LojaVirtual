@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
+import 'package:lojavirtual/src/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   BaseScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
-          Container(color: Colors.amber),
+          HomeTab(),
           Container(color: Colors.blueAccent),
           Container(color: Colors.greenAccent),
           Container(color: Colors.orangeAccent),
@@ -37,9 +38,9 @@ class _BaseScreenState extends State<BaseScreen> {
         },
         currentIndex: currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: CustomColors.customSwathColor,
+        backgroundColor: CustomColors.customContrastColor2,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withAlpha(100),
+        unselectedItemColor: Colors.white.withAlpha(200),
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),

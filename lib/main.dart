@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Loja Nicolau',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white.withAlpha(165),
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.indigo,
         ),
