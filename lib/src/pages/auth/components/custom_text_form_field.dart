@@ -1,6 +1,5 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomFormTextField extends StatefulWidget {
   const CustomFormTextField({
@@ -8,21 +7,23 @@ class CustomFormTextField extends StatefulWidget {
     required this.icon,
     required this.label,
     required this.keyType,
-    required this.controller,
-    this.enabled,
+    this.inputFormatters,
+    // required this.controller,
+    
     this.isDense,
     this.isSecret = false,
-    required this.validator,
+    // required this.validator,
   }) : super(key: key);
 
   final IconData icon;
   final String label;
-  final String? Function(String?) validator;
+  // final String? Function(String?) validator;
   final bool isSecret;
   final TextInputType keyType;
   final bool? isDense;
-  final TextEditingController? controller;
-  final bool? enabled;
+  final List<TextInputFormatter>? inputFormatters;
+  // final TextEditingController? controller;
+
 
   @override
   State<CustomFormTextField> createState() => _CustomFormTextFieldState();
@@ -42,10 +43,10 @@ class _CustomFormTextFieldState extends State<CustomFormTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: TextFormField(
-        enabled: widget.enabled,
-        controller: widget.controller,
+        inputFormatters: widget.inputFormatters,
+        // controller: widget.controller,
         obscureText: isObscure,
-        validator: widget.validator,
+        // validator: widget.validator,
         decoration: InputDecoration(
           suffixIcon: widget.isSecret
               ? IconButton(
