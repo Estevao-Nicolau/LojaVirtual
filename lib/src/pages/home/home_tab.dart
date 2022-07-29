@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/app_data.dart' as app_data;
 import 'package:lojavirtual/src/config/theme_colors.dart';
 import 'package:lojavirtual/src/pages/home/components/category_tile.dart';
+import 'package:lojavirtual/src/pages/home/components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   HomeTab({Key? key}) : super(key: key);
@@ -114,8 +115,8 @@ class _HomeTabState extends State<HomeTab> {
               ),
               itemCount: app_data.items.length,
               itemBuilder: (_,index){
-                return Container(
-                  color: Colors.amberAccent,
+                return ItemTile(
+                  item: app_data.items[index],
                 );
               },
             ),
