@@ -1,3 +1,4 @@
+import 'package:lojavirtual/src/models/cart_item_model.dart';
 import 'package:lojavirtual/src/models/item_model.dart';
 
 // Relógio
@@ -81,4 +82,19 @@ List<String> categories = [
   'Pijamas',
   'Camisas',
   'Sapatos'
+];
+
+List<CartItemModel> cartItems = [
+  CartItemModel(
+    item: watch,
+    quantity: 2,
+  ),
+  CartItemModel(
+    item: pajama,
+    quantity: 1,
+  ),
+  CartItemModel(
+    item: perfume,
+    quantity: 10,
+  )
 ];
