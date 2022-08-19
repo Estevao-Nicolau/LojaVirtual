@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
+import 'package:lojavirtual/src/pages/cart/components/cart_tile.dart';
 import 'package:lojavirtual/src/services/utils_services.dart';
 import 'package:lojavirtual/src/config/app_data.dart' as appData;
 
@@ -20,7 +21,7 @@ class CartTab extends StatelessWidget {
             child: ListView.builder(
               itemCount: appData.cartItems.length,
               itemBuilder: (_, index) {
-                return Text(appData.cartItems[index].item.itemName);
+                return CartTile(cartItem: appData.cartItems[index]);
               },),
           ),
           Container(

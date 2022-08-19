@@ -12,14 +12,11 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   int currentIndex = 0;
-  final pageController = PageController(
-
-  );
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
