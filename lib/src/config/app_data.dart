@@ -87,7 +87,7 @@ List<String> categories = [
 List<CartItemModel> cartItems = [
   CartItemModel(
     item: watch,
-    quantity: 2,
+    quantity: 1,
   ),
   CartItemModel(
     item: pajama,
