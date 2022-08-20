@@ -16,7 +16,7 @@ class CartTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: const EdgeInsets.fromLTRB(20, 4, 20, 0),
+        margin: const EdgeInsets.fromLTRB(20, 4, 20, 0), 
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
