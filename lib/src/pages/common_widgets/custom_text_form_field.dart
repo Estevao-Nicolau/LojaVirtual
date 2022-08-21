@@ -21,7 +21,7 @@ class CustomFormTextField extends StatefulWidget {
   final String label;
   // final String? Function(String?) validator;
   final bool isSecret;
-  final TextInputType keyType;
+  final TextInputType? keyType;
   final bool? isDense;
   final List<TextInputFormatter>? inputFormatters;
   // final TextEditingController? controller;
