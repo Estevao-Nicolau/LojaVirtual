@@ -1,5 +1,6 @@
 import 'package:lojavirtual/src/models/cart_item_model.dart';
 import 'package:lojavirtual/src/models/item_model.dart';
+import 'package:lojavirtual/src/models/user_model.dart';
 
 // Relógio
 ItemModel watch = ItemModel(
@@ -98,3 +99,11 @@ List<CartItemModel> cartItems = [
     quantity: 10,
   )
 ];
+
+UserModel user = UserModel(
+  name: 'Nicolau',
+  email: 'nicolau@hotmail.com',
+  phone: '11 9 0909-0909',
+  password: '123456',
+  cpf: '356.956.267-88',
+);

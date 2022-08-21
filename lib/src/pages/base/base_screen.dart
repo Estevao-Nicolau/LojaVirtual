@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
 import 'package:lojavirtual/src/pages/cart/cart_tab.dart';
 import 'package:lojavirtual/src/pages/home/home_tab.dart';
+import 'package:lojavirtual/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   BaseScreen({Key? key}) : super(key: key);
@@ -23,8 +24,8 @@ class _BaseScreenState extends State<BaseScreen> {
         children: [
           HomeTab(),
           CartTab(),
-          Container(color: Colors.greenAccent),
           Container(color: Colors.orangeAccent),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
