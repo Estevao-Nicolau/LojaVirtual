@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/firebase_options.dart';
+import 'package:lojavirtual/src/config/theme_colors.dart';
 import 'package:lojavirtual/src/pages/auth/sign_in_screen.dart';
 
 void main() async {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white.withAlpha(165),
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.indigo,
+          primarySwatch: CustomColors.customSwathColor,
         ),
         appBarTheme: const AppBarTheme(
           elevation: 1,

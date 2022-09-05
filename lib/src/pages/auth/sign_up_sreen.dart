@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
-import 'package:lojavirtual/src/pages/auth/components/custom_text_form_field.dart';
+import 'package:lojavirtual/src/pages/common_widgets/custom_text_form_field.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpScreen extends StatelessWidget {

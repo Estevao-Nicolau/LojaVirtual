@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
-import 'package:lojavirtual/src/pages/auth/components/custom_text_form_field.dart';
+import 'package:lojavirtual/src/pages/common_widgets/custom_text_form_field.dart';
 import 'package:lojavirtual/src/pages/auth/sign_up_sreen.dart';
 import 'package:lojavirtual/src/pages/base/base_screen.dart';
 
