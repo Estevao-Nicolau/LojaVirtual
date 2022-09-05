@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
+import 'package:lojavirtual/src/pages/cart/cart_tab.dart';
 import 'package:lojavirtual/src/pages/home/home_tab.dart';
+import 'package:lojavirtual/src/pages/profile/profile_tab.dart';
+
+import '../orders/orders_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   BaseScreen({Key? key}) : super(key: key);
@@ -11,22 +15,19 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   int currentIndex = 0;
-  final pageController = PageController(
-
-  );
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
           HomeTab(),
-          Container(color: Colors.blueAccent),
-          Container(color: Colors.greenAccent),
-          Container(color: Colors.orangeAccent),
+          CartTab(),
+          OrdersTab(),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
