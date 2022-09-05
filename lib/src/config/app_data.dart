@@ -1,5 +1,6 @@
 import 'package:lojavirtual/src/models/cart_item_model.dart';
 import 'package:lojavirtual/src/models/item_model.dart';
+import 'package:lojavirtual/src/models/order_model.dart';
 import 'package:lojavirtual/src/models/user_model.dart';
 
 // Relógio
@@ -107,3 +108,41 @@ UserModel user = UserModel(
   password: '123456',
   cpf: '356.956.267-88',
 );
+
+List<OrderModel> orders = [
+  // Pedido 01
+  OrderModel(
+    copyAndPaste: 'q1w2e3r4t5y6',
+    createdDateTime: DateTime.parse('2023-09-03 10:00:10.458'),
+    id: 'asd6a54da6s3d2',
+    status: 'pending_payment',
+    total: 11.0,
+    overdueDateTime: DateTime.parse('2023-09-03 10:00:10.458'),
+    items: [
+      CartItemModel(
+        item: shoes,
+        quantity: 2,
+      ),
+      CartItemModel(
+        item: pajama,
+        quantity: 2,
+      ),
+    ],
+  ),
+
+  // Pedido 02
+  OrderModel(
+    copyAndPaste: 'q1w2e3r4t5y3',
+    createdDateTime: DateTime.parse('2023-09-03 11:00:10.458'),
+    id: 'asd6a54da6s3d1',
+    status: 'shipping',
+    total: 11.0,
+    overdueDateTime: DateTime.parse('2023-09-03 11:00:10.458'),
+    items: [
+      CartItemModel(
+        item: perfume,
+        quantity: 2,
+      ),
+    ],
+  ),
+];

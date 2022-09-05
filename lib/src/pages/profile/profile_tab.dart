@@ -101,80 +101,82 @@ class _ProfileTabState extends State<ProfileTab> {
     return showDialog(
         context: context,
         builder: (context) {
-          return SingleChildScrollView(
-            child: Dialog(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)),
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // Titulo
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: Text(
-                              'Atualização de Senha',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+          return Center(
+            child: SingleChildScrollView(
+              child: Dialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Titulo
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(
+                                'Atualização de Senha',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          // Senha Atual
-                          CustomFormTextField(
-                            isSecret: true,
-                            icon: Icons.lock,
-                            label: 'Senha atual',
-                            keyType: null,
-                          ),
-                          // Senha Nova
-                          CustomFormTextField(
-                            isSecret: true,
-                            icon: Icons.lock_outline,
-                            label: 'Nova Senha',
-                            keyType: null,
-                          ),
-                          // Confirmar Senha
-                          CustomFormTextField(
-                            isSecret: true,
-                            icon: Icons.lock_outline,
-                            label: 'Confirma nova senha',
-                            keyType: null,
-                          ),
-                          // Botão de Confirmação
-                          SizedBox(
-                            width: 45,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              )),
-                              onPressed: () {},
-                              child: Text('Atualizar'),
+                            // Senha Atual
+                            CustomFormTextField(
+                              isSecret: true,
+                              icon: Icons.lock,
+                              label: 'Senha atual',
+                              keyType: null,
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: 2,
-                      right: 2,
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
-                          Icons.close,
+                            // Senha Nova
+                            CustomFormTextField(
+                              isSecret: true,
+                              icon: Icons.lock_outline,
+                              label: 'Nova Senha',
+                              keyType: null,
+                            ),
+                            // Confirmar Senha
+                            CustomFormTextField(
+                              isSecret: true,
+                              icon: Icons.lock_outline,
+                              label: 'Confirma nova senha',
+                              keyType: null,
+                            ),
+                            // Botão de Confirmação
+                            SizedBox(
+                              width: 45,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                )),
+                                onPressed: () {},
+                                child: Text('Atualizar'),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                  ],
-                )),
+                      Positioned(
+                        top: 2,
+                        right: 2,
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: Icon(
+                            Icons.close,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )),
+            ),
           );
         });
   }
