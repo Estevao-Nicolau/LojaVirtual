@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lojavirtual/src/models/cart_item_model.dart';
-import '../../../models/order_model.dart';
-import '../../../services/utils_services.dart';
+import 'package:lojavirtual/src/models/order_model.dart';
+import 'package:lojavirtual/src/pages/common_widgets/payment_dialog.dart';
+import 'package:lojavirtual/src/services/utils_services.dart';
 import 'order_status_widget.dart';
 
 class OrderTile extends StatelessWidget {
@@ -25,7 +26,7 @@ class OrderTile extends StatelessWidget {
             children: [
               Text('Pedido: ${order.id}'),
               Text(
-                utilsServices.formatDateTime(order.createdDateTime),
+                utilsServices.formatDateTime(order.createdDateTime!),
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.black,
@@ -93,12 +94,19 @@ class OrderTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) {
+                      return PaymentDialog(order: order);
+                    },
+                  );
+                },
                 icon: Image.asset(
                   '/Users/nicolaudev/Flutter_Projects/LojaVirtual/assets/pix.png',
                   height: 18,
                 ),
-                label: Text('Ver Qr Code Pix'),
+                label: Text('Ver Qr Code Pix '),
               ),
             )
           ],
@@ -130,7 +138,7 @@ class _OrderitemWidger extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
           Expanded(child: Text(orderItem.item.itemName)),
-          Text(utilsServices.priceToCurrency(orderItem.totalPrice()))
+          Text('Arrumar aqui ')
         ],
       ),
     );

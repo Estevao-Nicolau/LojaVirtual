@@ -6,7 +6,7 @@ import 'package:lojavirtual/src/models/user_model.dart';
 // Relógio
 ItemModel watch = ItemModel(
   itemName: 'Relógio',
-  imageUrl:
+  imgUrl:
       'https://cdn.pixabay.com/photo/2016/11/29/13/39/analog-watch-1869928__480.jpg',
   unit: 'Unid',
   price: 5000.0,
@@ -15,8 +15,7 @@ ItemModel watch = ItemModel(
 // Pijamas
 ItemModel pajama = ItemModel(
   itemName: 'Pijama',
-  imageUrl:
-      'https://cdn.pixabay.com/photo/2015/09/22/12/10/robe-951477_1280.jpg',
+  imgUrl: 'https://cdn.pixabay.com/photo/2015/09/22/12/10/robe-951477_1280.jpg',
   unit: 'Unid',
   price: 78.0,
   decription: 'Pijama feminino rosa',
@@ -25,7 +24,7 @@ ItemModel pajama = ItemModel(
 ItemModel shoes = ItemModel(
   itemName: 'Tenis',
   unit: 'Par',
-  imageUrl:
+  imgUrl:
       'https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310__340.png',
   price: 250.0,
   decription: 'All Star Verde',
@@ -34,7 +33,7 @@ ItemModel shoes = ItemModel(
 ItemModel shirts = ItemModel(
   itemName: 'Camisa',
   unit: 'Unid',
-  imageUrl:
+  imgUrl:
       'https://cdn.pixabay.com/photo/2014/03/24/13/42/t-shirt-294078__480.png',
   price: 88.0,
   decription: 'Camiseta básica Amarela',
@@ -43,8 +42,7 @@ ItemModel shirts = ItemModel(
 ItemModel belt = ItemModel(
   itemName: 'Cinto',
   unit: 'Unid',
-  imageUrl:
-      'https://cdn.pixabay.com/photo/2013/06/16/21/56/belt-139757__340.jpg',
+  imgUrl: 'https://cdn.pixabay.com/photo/2013/06/16/21/56/belt-139757__340.jpg',
   price: 230.0,
   decription: 'Cinto de Couro Marrom',
 );
@@ -52,7 +50,7 @@ ItemModel belt = ItemModel(
 ItemModel eyeglass = ItemModel(
   itemName: 'Óculos',
   unit: 'Unid',
-  imageUrl:
+  imgUrl:
       'https://cdn.pixabay.com/photo/2016/03/27/19/33/sunset-1283872__340.jpg',
   price: 500.0,
   decription: 'Óculos de Sol Masculino ',
@@ -61,7 +59,7 @@ ItemModel eyeglass = ItemModel(
 ItemModel perfume = ItemModel(
   itemName: 'Perfume',
   unit: 'Unid',
-  imageUrl:
+  imgUrl:
       'https://cdn.pixabay.com/photo/2018/08/27/15/09/safe-3635196__480.jpg',
   price: 3000.0,
   decription: 'Perfume feminino ',
@@ -88,14 +86,17 @@ List<String> categories = [
 
 List<CartItemModel> cartItems = [
   CartItemModel(
+    id: '',
     item: watch,
     quantity: 1,
   ),
   CartItemModel(
+    id: '',
     item: pajama,
     quantity: 1,
   ),
   CartItemModel(
+    id: '',
     item: perfume,
     quantity: 10,
   )
@@ -122,12 +123,15 @@ List<OrderModel> orders = [
       CartItemModel(
         item: shoes,
         quantity: 2,
+        id: '',
       ),
       CartItemModel(
         item: pajama,
         quantity: 2,
+        id: '',
       ),
     ],
+    qrCodeImage: '',
   ),
 
   // Pedido 02
@@ -142,7 +146,9 @@ List<OrderModel> orders = [
       CartItemModel(
         item: perfume,
         quantity: 2,
+        id: '',
       ),
     ],
+    qrCodeImage: '',
   ),
 ];
