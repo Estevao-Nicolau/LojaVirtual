@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
 import 'package:lojavirtual/src/models/item_model.dart';
 import 'package:lojavirtual/src/pages/common_widgets/quantity_widgets.dart';
 import 'package:lojavirtual/src/services/utils_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  ProductScreen({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
+  ProductScreen({Key? key, required this.item}) : super(key: key);
 
   final ItemModel item;
 
@@ -36,8 +31,8 @@ class _ProductScreenState extends State<ProductScreen> {
               // Imagem do produto
               Expanded(
                 child: Hero(
-                  tag: widget.item.imageUrl,
-                  child: Image.network(widget.item.imageUrl),
+                  tag: widget.item.imgUrl,
+                  child: Image.network(widget.item.imgUrl),
                 ),
               ),
               // Conteúdo do produto
@@ -77,11 +72,9 @@ class _ProductScreenState extends State<ProductScreen> {
                             suffixText: widget.item.unit,
                             value: cartItemQuantity,
                             result: (int quantity) {
-                              
                               setState(() {
                                 cartItemQuantity = quantity;
                               });
-
                             },
                           ),
                         ],

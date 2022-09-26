@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
-import 'package:lojavirtual/src/pages/orders/components/order_title.dart';
 import 'package:lojavirtual/src/config/app_data.dart' as appData;
+import 'package:lojavirtual/src/pages/orders/view/components/order_title.dart';
 
 class OrdersTab extends StatelessWidget {
   const OrdersTab({Key? key}) : super(key: key);

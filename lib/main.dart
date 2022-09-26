@@ -2,25 +2,26 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:lojavirtual/firebase_options.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
+import 'package:lojavirtual/src/pages/auth/controller/auth_controller.dart';
 import 'package:lojavirtual/src/pages/auth/sign_in_screen.dart';
+import 'package:lojavirtual/src/router/app_pages.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  Get.put(AuthController());
 
-  runApp(MyApp());
+  runApp( MyApp());
 }
 
-// visualDensity: VisualDensity.adaptivePlatformDensity,
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Loja Nicolau',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      initialRoute: PagesRoutes.splashRoute,
+      getPages: AppPages.pages,
     );
   }
 }

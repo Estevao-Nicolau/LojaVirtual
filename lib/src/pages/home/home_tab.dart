@@ -5,6 +5,8 @@ import 'package:lojavirtual/src/config/theme_colors.dart';
 import 'package:lojavirtual/src/pages/home/components/category_tile.dart';
 import 'package:lojavirtual/src/pages/home/components/item_tile.dart';
 
+import '../common_widgets/app_name_widget.dart';
+
 class HomeTab extends StatefulWidget {
   HomeTab({Key? key}) : super(key: key);
 
@@ -23,20 +25,7 @@ class _HomeTabState extends State<HomeTab> {
         backgroundColor: CustomColors.customSwathColor,
         elevation: 0,
         centerTitle: true,
-        title: Text.rich(
-          TextSpan(
-            style: TextStyle(fontSize: 30),
-            children: [
-              TextSpan(
-                  text: 'Loja',
-                  style:
-                      TextStyle(color: CustomColors.customContrastColorLogo)),
-              TextSpan(
-                  text: 'Nicolau',
-                  style: TextStyle(color: CustomColors.customContrastColor2)),
-            ],
-          ),
-        ),
+        title: AppNameWidget(),
         actions: [
           Padding(
             padding: const EdgeInsets.only(
@@ -108,13 +97,12 @@ class _HomeTabState extends State<HomeTab> {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               physics: const BouncingScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 9 / 11.5
-              ),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 9 / 11.5),
               itemCount: app_data.items.length,
-              itemBuilder: (_,index){
+              itemBuilder: (_, index) {
                 return ItemTile(
                   item: app_data.items[index],
                 );
@@ -126,3 +114,5 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 }
+
+

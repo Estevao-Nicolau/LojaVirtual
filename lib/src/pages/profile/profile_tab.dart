@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:lojavirtual/src/config/theme_colors.dart';
+import 'package:lojavirtual/src/pages/auth/controller/auth_controller.dart';
 import 'package:lojavirtual/src/pages/common_widgets/custom_text_form_field.dart';
+import 'package:lojavirtual/src/services/validators.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:lojavirtual/src/config/app_data.dart' as app;
 
@@ -14,170 +15,200 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
-  final cpfFormatter = MaskTextInputFormatter(
-    mask: '###.###.###-##',
-    filter: {'#': RegExp(r'[0-9]')},
-  );
-
-  final phoneFormatter = MaskTextInputFormatter(
-    mask: '## # ####-####',
-    filter: {'#': RegExp(r'[0-9]')},
-  );
-
+ final authController = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perfil do Usuário'),
+        title: const Text('Perfil do usuário'),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.logout_outlined),
-          )
+            onPressed: () {
+              authController.signOut();
+            },
+            icon: const Icon(
+              Icons.logout,
+            ),
+          ),
         ],
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(16, 32, 16, 16),
         children: [
-          // Email
+           // Email
           CustomFormTextField(
             readOnly: true,
-            initialValue: app.user.email,
+            initialValue: authController.user.email,
             icon: Icons.email,
-            label: "Email",
-            isDense: true,
-            keyType: TextInputType.emailAddress,
+            label: 'Email',
           ),
+
           // Nome
           CustomFormTextField(
             readOnly: true,
-            initialValue: app.user.name,
+            initialValue: authController.user.name,
             icon: Icons.person,
-            label: "Nome",
-            isDense: true,
-            keyType: TextInputType.name,
+            label: 'Nome',
           ),
+
           // Celular
           CustomFormTextField(
             readOnly: true,
-            initialValue: app.user.phone,
-            icon: Icons.phone_android_sharp,
-            label: "Celular",
-            isDense: true,
-            keyType: TextInputType.number,
-            // inputFormatters: [phoneFormatter],
+            initialValue: authController.user.phone,
+            icon: Icons.phone,
+            label: 'Celular',
           ),
+
           // CPF
           CustomFormTextField(
             readOnly: true,
-            initialValue: app.user.cpf,
+            initialValue: authController.user.cpf,
             icon: Icons.file_copy,
-            label: "CPF",
+            label: 'CPF',
             isSecret: true,
-            // inputFormatters: [cpfFormatter],
-            isDense: true,
-            keyType: TextInputType.number,
           ),
 
-          // Botão para atualizar
+          // Botão para atualizar a senha
           SizedBox(
-            height: 45,
+            height: 50,
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: CustomColors.customContrastColorLogo),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              onPressed: updatePassword,
-              child: Text('Atualizar senha'),
+                side: const BorderSide(
+                  color: Colors.green,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              onPressed: () {
+                updatePassword();
+              },
+              child: const Text('Atualizar senha'),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Future<bool?> updatePassword() {
+   Future<bool?> updatePassword() {
+    final currentPasswordController = TextEditingController();
+    final newPasswordController = TextEditingController();
+    final _formKey = GlobalKey<FormState>();
+
     return showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: SingleChildScrollView(
-              child: Dialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Stack(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            // Titulo
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Text(
-                                'Atualização de Senha',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            // Senha Atual
-                            CustomFormTextField(
-                              isSecret: true,
-                              icon: Icons.lock,
-                              label: 'Senha atual',
-                              keyType: null,
-                            ),
-                            // Senha Nova
-                            CustomFormTextField(
-                              isSecret: true,
-                              icon: Icons.lock_outline,
-                              label: 'Nova Senha',
-                              keyType: null,
-                            ),
-                            // Confirmar Senha
-                            CustomFormTextField(
-                              isSecret: true,
-                              icon: Icons.lock_outline,
-                              label: 'Confirma nova senha',
-                              keyType: null,
-                            ),
-                            // Botão de Confirmação
-                            SizedBox(
-                              width: 45,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                                onPressed: () {},
-                                child: Text('Atualizar'),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        top: 2,
-                        right: 2,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: Icon(
-                            Icons.close,
+                      // Titulo
+                      const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 12),
+                        child: Text(
+                          'Atualização de senha',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
+
+                      // Senha atual
+                      CustomFormTextField(
+                        controller: currentPasswordController,
+                        isSecret: true,
+                        icon: Icons.lock,
+                        label: 'Senha atual',
+                        validator: passwordValidator,
+                      ),
+
+                      // Nova senha
+                      CustomFormTextField(
+                        controller: newPasswordController,
+                        isSecret: true,
+                        icon: Icons.lock_outline,
+                        label: 'Nova senha',
+                        validator: passwordValidator,
+                      ),
+
+                      // Confirmação nova senha
+                      CustomFormTextField(
+                        isSecret: true,
+                        icon: Icons.lock_outline,
+                        label: 'Confirmar nova senha',
+                        validator: (password) {
+                          final result = passwordValidator(password);
+
+                          if (result != null) {
+                            return result;
+                          }
+
+                          if (password != newPasswordController.text) {
+                            return 'As senhas não são equivalentes';
+                          }
+
+                          return null;
+                        },
+                      ),
+
+                      // Botão de confirmação
+                      SizedBox(
+                        height: 45,
+                        child: Obx(() => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              onPressed: authController.isLoading.value
+                                  ? null
+                                  : () {
+                                      if (_formKey.currentState!.validate()) {
+                                        authController.changePassword(
+                                          currentPassword:
+                                              currentPasswordController.text,
+                                          newPassword:
+                                              newPasswordController.text,
+                                        );
+                                      }
+                                    },
+                              child: authController.isLoading.value
+                                  ? const CircularProgressIndicator()
+                                  : const Text('Atualizar'),
+                            )),
+                      ),
                     ],
-                  )),
-            ),
-          );
-        });
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 5,
+                right: 5,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(Icons.close),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

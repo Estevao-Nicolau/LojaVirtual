@@ -6,6 +6,7 @@ import 'package:lojavirtual/src/services/utils_services.dart';
 
 class ItemTile extends StatelessWidget {
   final ItemModel item;
+  
   ItemTile({Key? key, required this.item}) : super(key: key);
 
   final UtilsServices utilsServices = UtilsServices();
@@ -41,8 +42,8 @@ class ItemTile extends StatelessWidget {
                   // imagen
                   Expanded(
                     child: Hero(
-                      tag: item.imageUrl,
-                      child: Image.network(item.imageUrl),
+                      tag: item.imgUrl,
+                      child: Image.network(item.imgUrl),
                     ),
                   ),
                   // Nome
