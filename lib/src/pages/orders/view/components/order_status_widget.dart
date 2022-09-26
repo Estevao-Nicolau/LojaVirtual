@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lojavirtual/src/config/theme_colors.dart';
 
-import '../../../config/theme_colors.dart';
 
 class OrderStatus extends StatelessWidget {
   final String status;
